@@ -36,9 +36,10 @@ namespace Mapbox.Examples.Playground {
 		void Start() {
 			_map = new Map<VectorTile>(MapboxAccess.Instance);
 			_map.Zoom = 18;
-			// This marks us an an observer to map.
-			// We will get each tile in OnNext(VectorTile tile) as they become available.
-			_map.Subscribe(this);
+            _map.MapId = "mapbox.mapbox-streets-v7";
+            // This marks us an an observer to map.
+            // We will get each tile in OnNext(VectorTile tile) as they become available.
+            _map.Subscribe(this);
 			_map.Update();
 		}
 
