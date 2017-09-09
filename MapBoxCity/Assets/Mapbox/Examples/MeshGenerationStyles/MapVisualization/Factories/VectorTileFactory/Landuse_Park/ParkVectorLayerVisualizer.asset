@@ -17,5 +17,5 @@ MonoBehaviour:
   Filters: []
   _defaultStack: {fileID: 0}
   Stacks:
-  - Type: park
+  - Type: parks
     Stack: {fileID: 11400000, guid: 000166c0f999e4d44b968d47724ea242, type: 2}
