@@ -6,12 +6,11 @@ namespace TreeCity
     {
         private const string TREE_HEIGHT_KEY = "Tree Height";
         private const string DIAMETER_KEY = "Diameter";
-        public const int INVALID_INT = -1;
 
         private TreeModel() { }
 
-        public int diameter;
-        public int height;
+        public float? diameter = null;
+        public float? height = null;
 
         public static TreeModel ParseData(Dictionary<string, object> properties)
         {
@@ -22,13 +21,14 @@ namespace TreeCity
 
             TreeModel tree = new TreeModel();
 
-            if (!int.TryParse(treeHeightObject.ToString(), out tree.height))
+            float val;
+            if (float.TryParse(treeHeightObject.ToString(), out val))
             {
-                tree.height = INVALID_INT;
+                tree.height = val;
             }
-            if (!int.TryParse(diameterObject.ToString(), out tree.diameter))
+            if (float.TryParse(diameterObject.ToString(), out val))
             {
-                tree.diameter = INVALID_INT;
+                tree.diameter = val;
             }
 
             return tree;

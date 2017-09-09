@@ -37,13 +37,13 @@ namespace TreeCity
                 go.transform.localScale = Vector3.one / go.transform.lossyScale.x;
             }
 
-            float scale = Random.Range(.7f, 1.3f);
+            TreeModel tree = TreeModel.ParseData(fb.Data.Properties);
+
+            float scale = (tree.diameter / 10) ?? Random.Range(.7f, 1.3f);
             go.transform.localScale *= scale;
 
             float rotationY = Random.Range(0, 360);
             go.transform.localEulerAngles = new Vector3(0, rotationY, 0);
-
-            TreeModel.ParseData(fb.Data.Properties);
         }
     }
 }
