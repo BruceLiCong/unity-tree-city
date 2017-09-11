@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: TreePrefabModifier
   m_EditorClassIdentifier: 
   Active: 1
-  _prefab: {fileID: 100000, guid: d7ebb2b5789a2be45b7bd26b3b9d50aa, type: 2}
-  _scaleDownWithWorld: 1
+  _prefabs:
+  - {fileID: 100000, guid: 6b4b29e49f76c9f46b7f3594d299d8d9, type: 2}
+  - {fileID: 100000, guid: 232d918e673de694d8a118b6efe0bf6f, type: 2}
+  _forceScale: 0.7

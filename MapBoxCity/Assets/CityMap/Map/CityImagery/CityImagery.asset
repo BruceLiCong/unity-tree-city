@@ -11,13 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b10536479dade041b6db9893fdf723a, type: 3}
   m_Name: CityImagery
   m_EditorClassIdentifier: 
-  _mapIdType: 0
+  _mapIdType: 1
   _customStyle:
     Name: PhillyTreeMap
     Id: mapbox://styles/iarellano/cj70rt12x01rk2smx5v2xh7de
     Modified: 2017-08-31T22:04:26.01Z
     UserName: iarellano
-  _mapId: mapbox://styles/mapbox/dark-v9
-  _useCompression: 1
+  _mapId: mapbox://styles/iarellano/cj70rt12x01rk2smx5v2xh7de
+  _useCompression: 0
   _useMipMap: 0
-  _useRetina: 0
+  _useRetina: 1
