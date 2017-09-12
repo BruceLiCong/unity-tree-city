@@ -11,7 +11,7 @@ namespace Mapbox.Examples
 
 		void Start()
 		{
-			foreach (var item in GetComponentInChildren<MeshRenderer>().materials)
+			foreach (var item in GetComponent<MeshRenderer>().materials)
 			{
 				_materials.Add(item);
 				_original.Add(item.color);

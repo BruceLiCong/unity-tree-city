@@ -1,5 +1,7 @@
 namespace TreeCity
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using UnityEngine;
     using Mapbox.Unity.MeshGeneration.Components;
     using Mapbox.Unity.MeshGeneration.Interfaces;
@@ -13,6 +15,9 @@ namespace TreeCity
 
         [SerializeField]
         private float _scale = 1.0f;
+
+        [SerializeField]
+        private List<GameObjectModifier> _prefabModifiers;
 
         public override void Run(FeatureBehaviour fb)
         {
@@ -34,8 +39,14 @@ namespace TreeCity
                 tm.Set(fb.Data.Properties);
             }
 
-            TreeModel tree = TreeModel.ParseData(fb.Data.Properties);
+            /// Runs modifiers on each tree prefab
+            foreach (GameObjectModifier mod in _prefabModifiers.Where(x => x.Active))
+            {
+                mod.Run(bd);
+            }
 
+            /// Scale tree based on its diameter
+            TreeModel tree = TreeModel.ParseData(fb.Data.Properties);
             float scale = _scale;
             float runningDiameter = tree.diameter ?? 1.0f;
             while (runningDiameter > 1)
@@ -45,6 +56,7 @@ namespace TreeCity
             }
             go.transform.localScale *= scale * Random.Range(.9f, 1.1f);
 
+            /// Rotate tree in different directions
             float rotationY = Random.Range(0, 360);
             go.transform.localEulerAngles = new Vector3(0, rotationY, 0);
         }
