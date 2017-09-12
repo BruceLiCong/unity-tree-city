@@ -12,7 +12,7 @@ namespace TreeCity
         private GameObject[] _prefabs;
 
         [SerializeField]
-        private float _forceScale = 1.0f;
+        private float _scale = 1.0f;
 
         public override void Run(FeatureBehaviour fb)
         {
@@ -36,7 +36,7 @@ namespace TreeCity
 
             TreeModel tree = TreeModel.ParseData(fb.Data.Properties);
 
-            float scale = _forceScale;
+            float scale = _scale;
             float runningDiameter = tree.diameter ?? 1.0f;
             while (runningDiameter > 1)
             {

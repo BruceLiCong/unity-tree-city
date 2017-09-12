@@ -1,4 +1,4 @@
-﻿namespace Mapbox.Examples
+namespace Mapbox.Examples
 {
 	using UnityEngine;
 	using System.Collections.Generic;
@@ -11,7 +11,7 @@
 
 		void Start()
 		{
-			foreach (var item in GetComponent<MeshRenderer>().materials)
+			foreach (var item in GetComponentInChildren<MeshRenderer>().materials)
 			{
 				_materials.Add(item);
 				_original.Add(item.color);

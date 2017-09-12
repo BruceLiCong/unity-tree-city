@@ -16,3 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5cbf3818c4210864a93e7d4607c579af, type: 2}
   GoModifiers:
   - {fileID: 11400000, guid: 8ab6abc2c38370d4b86220b96307fe20, type: 2}
+  - {fileID: 11400000, guid: fe5f2994f28de924caf9221906fef2cc, type: 2}
+  - {fileID: 11400000, guid: 0004a6dae1897bf4ba5278c06595585c, type: 2}
+  - {fileID: 11400000, guid: 76d0d8013e6307d4da006c8b0d136bfb, type: 2}
