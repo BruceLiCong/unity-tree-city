@@ -1,4 +1,4 @@
-﻿namespace Mapbox.Examples
+namespace Mapbox.Examples
 {
 	using UnityEngine;
 	using Mapbox.Unity.MeshGeneration.Components;
@@ -18,5 +18,5 @@
 			_marker = marker;
 			_feature = fb;
 		}
-	}
+    }
 }

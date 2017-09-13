@@ -1,4 +1,4 @@
-﻿namespace Mapbox.Examples
+namespace Mapbox.Examples
 {
 	using Mapbox.Unity.MeshGeneration.Components;
 	using UnityEngine;
@@ -60,7 +60,7 @@
 				var pos = Camera.main.WorldToScreenPoint(_selectedFeature.transform.position + (_selectedFeature.transform.lossyScale.x * vert));
 				if (pos.x < left)
 					left = pos.x;
-				else if (pos.x > right)
+				else if (pos.x > right) 
 					right = pos.x;
 				if (pos.y > top)
 					top = pos.y;
@@ -72,7 +72,13 @@
 			(_wrapperMarker as RectTransform).sizeDelta = new Vector2(right - left + 20, top - bottom + 20);
 
 			_infoPanel.position = new Vector2(right + 10, top + 10);
-			_info.text = string.Join(" \r\n ", _selectedFeature.Data.Properties.Select(x => x.Key + " - " + x.Value.ToString()).ToArray());
-		}
+
+            string[] infoText = _selectedFeature.Data.Properties
+                                    .Where(x => !string.IsNullOrEmpty(x.Value.ToString()))
+                                    .Select(x => x.Key + " - " + x.Value.ToString())
+                                    .ToArray();
+
+            _info.text = string.Join("\r\n ", infoText);
+        }
 	}
 }
