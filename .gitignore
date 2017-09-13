@@ -38,4 +38,5 @@ sysinfo.txt
 
 # API key file
 keys.json
-MapBoxCity/.~lock.PhillyTreeMap.csv#
+
+.~lock.*

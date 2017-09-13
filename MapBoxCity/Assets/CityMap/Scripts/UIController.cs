@@ -3,7 +3,7 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField]
-    public Camera _camera;
+    private Camera _camera;
 
     private void Start()
     {
