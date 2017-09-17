@@ -3,7 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class FPSInput : MonoBehaviour
 {
-    [SerializeField]
     private CharacterController _characterController;
 
     private float gravity = -9.8f;

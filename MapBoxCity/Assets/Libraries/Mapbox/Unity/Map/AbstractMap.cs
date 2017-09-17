@@ -1,4 +1,4 @@
-﻿namespace Mapbox.Unity.Map
+namespace Mapbox.Unity.Map
 {
 	using System;
 	using Mapbox.Unity.MeshGeneration;
@@ -86,9 +86,9 @@
 
 		bool _worldHeightFixed = false;
 
-		public event Action OnInitialized = delegate { };
+        public event Action OnInitialized = delegate { };
 
-		protected virtual void Awake()
+        protected virtual void Awake()
 		{
 			_worldHeightFixed = false;
 			_fileSouce = MapboxAccess.Instance;
@@ -98,7 +98,7 @@
 			{
 				_root = transform;
 			}
-		}
+        }
 
 		protected virtual void OnDestroy()
 		{

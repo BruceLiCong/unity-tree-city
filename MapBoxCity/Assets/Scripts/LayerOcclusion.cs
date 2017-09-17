@@ -1,17 +1,19 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class LayerOcclusion : MonoBehaviour
 {
     private const int MAX_LAYER_COUNT = 32;
 
-    [SerializeField]
     private Camera _camera;
 
-    [SerializeField]
-    private string _layerName;
+    public string layerName;
+    public float distance;
 
-    [SerializeField]
-    private float _distance;
+    private void Awake()
+    {
+        _camera = GetComponent<Camera>();
+    }
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class LayerOcclusion : MonoBehaviour
             }
         }
 
-        distances[LayerMask.NameToLayer(_layerName)] = _distance;
+        distances[LayerMask.NameToLayer(layerName)] = distance;
         _camera.layerCullDistances = distances;
     }
 }
