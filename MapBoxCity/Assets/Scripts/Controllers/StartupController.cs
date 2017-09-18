@@ -8,8 +8,6 @@ public class StartupController : MonoBehaviour
     private void Awake()
     {
         Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
-
-        Physics.queriesHitTriggers = true;
     }
 
     private void OnDestroy()
