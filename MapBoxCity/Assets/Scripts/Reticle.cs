@@ -20,7 +20,9 @@ public class Reticle : MonoBehaviour
     {
         _camera = GetComponent<Camera>();
 
-        LockCursor();
+        /// Hide the cursor and lock to center of the screen
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void OnGUI()
@@ -28,14 +30,5 @@ public class Reticle : MonoBehaviour
         float posX = _camera.pixelWidth / 2 - _style.fontSize / 4;
         float posY = _camera.pixelHeight / 2 - _style.fontSize / 2;
         GUI.Label(new Rect(posX, posY, _style.fontSize, _style.fontSize), RETICLE, _style);
-    }
-
-    /// <summary>
-    /// Hide the cursor and lock to center of the screen
-    /// </summary>
-    public void LockCursor()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 }

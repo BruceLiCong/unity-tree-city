@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.47794116, g: 0.47794116, b: 0.47794116, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -412,12 +412,12 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 218956a5c2a6e42d6a60afccf80b002b, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: bd1ea67ca2b5742d1a24fcbdc17c55e1, type: 3}
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 64
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -477,12 +477,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e412a4b45c181e8408bbf26fd6eba0c9, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1280205051 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114214639022435144, guid: e412a4b45c181e8408bbf26fd6eba0c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1230061429}
-  m_Script: {fileID: 11500000, guid: cd961b1c9541a4cee99686069ecce852, type: 3}
 --- !u!1 &1445483958
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,8 +517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921b317f3f2f3494b8e9e3bf52d21453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _progressBar: {fileID: 0}
-  _map: {fileID: 1280205051}
   _player: {fileID: 1646459531728300, guid: 7a74421b8159ae144bf23b84d96ad14d, type: 2}
 --- !u!1 &1663416109
 GameObject:
@@ -537,12 +529,12 @@ GameObject:
   - component: {fileID: 1663416112}
   - component: {fileID: 1663416111}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: LoadingPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1663416110
 RectTransform:
   m_ObjectHideFlags: 0
