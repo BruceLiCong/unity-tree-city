@@ -21,7 +21,14 @@ namespace TreeCity
 
 	    void Update()
 	    {
-		    Snap();
+            if (_selectedFeature != null)
+            {
+                Vector3 direction = _selectedFeature.transform.position - Camera.main.transform.position;
+                if (Vector3.Dot(Camera.main.transform.forward, direction) > 0.0f)
+                {
+                    Snap();
+                }
+            }
 	    }
 
 	    internal void Clear()
@@ -36,6 +43,7 @@ namespace TreeCity
 			    Clear();
 			    return;
 		    }
+
 		    _selectedFeature = selectedFeature;
 		    transform.position = new Vector3(0, 0, 0);
 		    var mesh = selectedFeature.GetComponent<MeshFilter>();
@@ -80,7 +88,7 @@ namespace TreeCity
                                     .Select(x => x.Key + " - " + x.Value.ToString())
                                     .ToArray();
 
-            _info.text = string.Join("\r\n ", infoText);
+            _info.text = string.Join("\r\n", infoText);
         }
     }
 }
