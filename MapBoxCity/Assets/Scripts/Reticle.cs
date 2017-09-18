@@ -19,6 +19,8 @@ public class Reticle : MonoBehaviour
     private void Start()
     {
         _camera = GetComponent<Camera>();
+
+        LockCursor();
     }
 
     private void OnGUI()
