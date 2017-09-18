@@ -14,9 +14,9 @@ namespace TreeCity
 		    _feature = fb;
 	    }
 
-        public void Select()
+        public void RequestSelect(bool hasSelect)
         {
-            _marker.Show(_feature);
+            _marker.Show(hasSelect ? _feature : null);
         }
     }
 }

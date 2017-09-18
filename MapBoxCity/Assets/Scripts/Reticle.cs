@@ -10,6 +10,7 @@ namespace TreeCity
         private GUIStyle _style;
         private Camera _camera;
         private Vector3 _screenCenter;
+        private FeatureSelectionDetector _lastSelected;
 
         private void Awake()
         {
@@ -31,7 +32,13 @@ namespace TreeCity
 
         private void FixedUpdate()
         {
-            bool didMouseClick = Input.GetMouseButtonDown(0);
+            bool didClickMouse = Input.GetMouseButtonDown(0);
+
+            if (didClickMouse && _lastSelected != null)
+            {
+                _lastSelected.RequestSelect(false);
+                _lastSelected = null;
+            }
 
             Ray ray = _camera.ScreenPointToRay(_screenCenter);
             RaycastHit hit;
@@ -43,9 +50,13 @@ namespace TreeCity
                 FeatureSelectionDetector selectDetector = go.GetComponent<FeatureSelectionDetector>();
                 HighlightFeature highlight = go.GetComponent<HighlightFeature>();
 
-                if (selectDetector != null && didMouseClick)
+                if (didClickMouse)
                 {
-                    selectDetector.Select();
+                    if (selectDetector != null)
+                    {
+                        selectDetector.RequestSelect(true);
+                        _lastSelected = selectDetector;
+                    }
                 }
 
                 if (highlight != null)
