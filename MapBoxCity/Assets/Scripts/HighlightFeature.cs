@@ -1,54 +1,57 @@
-using UnityEngine;
-using System.Collections.Generic;
-
-public class HighlightFeature : MonoBehaviour
+namespace TreeCity
 {
-	private List<Color> _original = new List<Color>();
-	private Color _highlight = Color.red;
-	private List<Material> _materials = new List<Material>();
-    private bool _hasFocus;
+    using UnityEngine;
+    using System.Collections.Generic;
 
-    void Start()
-	{
-		foreach (var item in GetComponent<MeshRenderer>().materials)
-		{
-			_materials.Add(item);
-			_original.Add(item.color);
-		}
-	}
-
-    private void Update()
+    public class HighlightFeature : MonoBehaviour
     {
-        if (_hasFocus)
+	    private List<Color> _original = new List<Color>();
+	    private Color _highlight = Color.red;
+	    private List<Material> _materials = new List<Material>();
+        private bool _hasFocus;
+
+        void Start()
+	    {
+		    foreach (var item in GetComponent<MeshRenderer>().materials)
+		    {
+			    _materials.Add(item);
+			    _original.Add(item.color);
+		    }
+	    }
+
+        private void Update()
         {
-            OnFocus();
-        }
-        else
-        {
-            OnFocusLost();
+            if (_hasFocus)
+            {
+                OnFocus();
+            }
+            else
+            {
+                OnFocusLost();
+            }
+
+            _hasFocus = false;
         }
 
-        _hasFocus = false;
-    }
-
-    private void OnFocus()
-    {
-        foreach (var item in _materials)
+        private void OnFocus()
         {
-            item.color = _highlight;
+            foreach (var item in _materials)
+            {
+                item.color = _highlight;
+            }
         }
-    }
 
-    private void OnFocusLost()
-    {
-        for (int i = 0; i < _materials.Count; i++)
+        private void OnFocusLost()
         {
-            _materials[i].color = _original[i];
+            for (int i = 0; i < _materials.Count; i++)
+            {
+                _materials[i].color = _original[i];
+            }
         }
-    }
 
-    public void SetFocus(bool focus)
-    {
-        _hasFocus = focus;
+        public void SetFocus(bool focus)
+        {
+            _hasFocus = focus;
+        }
     }
 }
