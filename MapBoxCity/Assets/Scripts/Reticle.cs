@@ -15,7 +15,7 @@ namespace TreeCity
         private void Awake()
         {
             _style = new GUIStyle();
-            _style.fontSize = 15;
+            _style.fontSize = 16;
             _style.fontStyle = FontStyle.Bold;
             _style.normal.textColor = Color.white;
         }
@@ -24,10 +24,6 @@ namespace TreeCity
         {
             _camera = GetComponent<Camera>();
             _screenCenter = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-
-            /// Hide the cursor and lock to center of the screen
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
 
         private void FixedUpdate()
@@ -71,6 +67,15 @@ namespace TreeCity
             float posX = _camera.pixelWidth / 2 - _style.fontSize / 4;
             float posY = _camera.pixelHeight / 2 - _style.fontSize / 2;
             GUI.Label(new Rect(posX, posY, _style.fontSize, _style.fontSize), RETICLE, _style);
+        }
+
+        /// <summary>
+        /// Hide the cursor and lock to center of the screen
+        /// </summary>
+        private void LockCursor()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }
