@@ -24,7 +24,7 @@ namespace TreeCity
             _camera = GetComponent<Camera>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             bool didClickMouse = Input.GetMouseButtonDown(0);
 
