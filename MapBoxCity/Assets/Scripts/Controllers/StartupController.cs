@@ -5,6 +5,8 @@ public class StartupController : MonoBehaviour
     [SerializeField]
     private GameObject _player;
 
+    private GameObject _playerInstance;
+
     private void Awake()
     {
         Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
@@ -17,7 +19,10 @@ public class StartupController : MonoBehaviour
 
     private void OnMapInitialized()
     {
-        GameObject player = Instantiate(_player);
-        player.transform.position = new Vector3(-80, 1, -80); // TODO: Serialize? LatLng->World?
+        if (_playerInstance == null)
+        {
+            _playerInstance = Instantiate(_player);
+            _playerInstance.transform.position = new Vector3(-80, 1, -80); // TODO: Serialize? LatLng->World?
+        }
     }
 }

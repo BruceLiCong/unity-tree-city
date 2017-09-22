@@ -19,18 +19,17 @@ namespace TreeCity
 		    }
 	    }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (_hasFocus)
             {
                 OnFocus();
+                _hasFocus = false;
             }
             else
             {
                 OnFocusLost();
             }
-
-            _hasFocus = false;
         }
 
         private void OnFocus()
