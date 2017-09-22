@@ -9,7 +9,6 @@ namespace TreeCity
 
         private GUIStyle _style;
         private Camera _camera;
-        private Vector3 _screenCenter;
         private FeatureSelectionDetector _lastSelected;
 
         private void Awake()
@@ -23,7 +22,6 @@ namespace TreeCity
         private void Start()
         {
             _camera = GetComponent<Camera>();
-            _screenCenter = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
         }
 
         private void FixedUpdate()
@@ -36,7 +34,7 @@ namespace TreeCity
                 _lastSelected = null;
             }
 
-            Ray ray = _camera.ScreenPointToRay(_screenCenter);
+            Ray ray = _camera.ScreenPointToRay(new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0));
             RaycastHit hit;
             int layerMask = 1 << LayerMask.NameToLayer("Tree");
 
