@@ -82,6 +82,7 @@ namespace TreeCity
 		    (_wrapperMarker as RectTransform).sizeDelta = new Vector2(right - left + 20, top - bottom + 20);
 
 		    _infoPanel.position = new Vector2(right + 10, top + 10);
+            _info.fontSize = 32;
 
             string[] infoText = _selectedFeature.Data.Properties
                                     .Where(x => !string.IsNullOrEmpty(x.Value.ToString()))

@@ -14,7 +14,7 @@ namespace TreeCity
         private void Awake()
         {
             _style = new GUIStyle();
-            _style.fontSize = 16;
+            _style.fontSize = 32;
             _style.fontStyle = FontStyle.Bold;
             _style.normal.textColor = Color.white;
         }
