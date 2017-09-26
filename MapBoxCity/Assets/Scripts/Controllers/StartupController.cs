@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class StartupController : MonoBehaviour
 {
+    private const string ESCAPE = "escape";
+
     [SerializeField]
     private GameObject _player;
 
@@ -23,6 +25,14 @@ public class StartupController : MonoBehaviour
         {
             _playerInstance = Instantiate(_player);
             _playerInstance.transform.position = new Vector3(-80, 1, -80); // TODO: Serialize? LatLng->World?
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(ESCAPE))
+        {
+            Application.Quit();
         }
     }
 }
