@@ -4,6 +4,7 @@ namespace TreeCity
     using System.Linq;
     using UnityEngine;
     using Mapbox.Unity.MeshGeneration.Components;
+    using Mapbox.Unity.MeshGeneration.Data;
     using Mapbox.Unity.MeshGeneration.Interfaces;
     using Mapbox.Unity.MeshGeneration.Modifiers;
 
@@ -14,12 +15,12 @@ namespace TreeCity
         private GameObject[] _prefabs;
 
         [SerializeField]
-        private float _scale = 1.0f;
+        private float _scale = 0.1f;
 
         [SerializeField]
         private List<GameObjectModifier> _prefabModifiers;
 
-        public override void Run(FeatureBehaviour fb)
+        public override void Run(FeatureBehaviour fb, UnityTile tile)
         {
             int selpos = fb.Data.Points[0].Count / 2;
             var met = fb.Data.Points[0][selpos];
@@ -39,10 +40,10 @@ namespace TreeCity
                 tm.Set(fb.Data.Properties);
             }
 
-            /// Runs modifiers on each tree prefab
+            /// Runs modifiers on each prefab
             foreach (GameObjectModifier mod in _prefabModifiers.Where(x => x.Active))
             {
-                mod.Run(bd);
+                mod.Run(bd, tile);
             }
 
             /// Scale tree based on its diameter
@@ -51,7 +52,7 @@ namespace TreeCity
             float runningDiameter = tree.diameter ?? 1.0f;
             while (runningDiameter > 1)
             {
-                scale += 0.2f;
+                scale += 0.02f;
                 runningDiameter -= 12.0f;
             }
             go.transform.localScale *= scale * Random.Range(.9f, 1.1f);
