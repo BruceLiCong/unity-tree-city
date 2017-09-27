@@ -11,6 +11,7 @@ namespace TreeCity
         private void Start()
         {
             _camera = GetComponent<Camera>();
+            Physics.queriesHitTriggers = true;
         }
 
         private void Update()
@@ -27,25 +28,28 @@ namespace TreeCity
             RaycastHit hit;
             int layerMask = 1 << LayerMask.NameToLayer("Tree");
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(ray, out hit))
             {
                 GameObject go = hit.transform.gameObject;
-                FeatureSelectionDetector selectDetector = go.GetComponent<FeatureSelectionDetector>();
-                HighlightFeature highlight = go.GetComponent<HighlightFeature>();
-
-                if (didClickMouse)
+                if (go.layer == LayerMask.NameToLayer("Tree"))
                 {
-                    if (selectDetector != null)
+                    FeatureSelectionDetector selectDetector = go.GetComponent<FeatureSelectionDetector>();
+                    HighlightFeature highlight = go.GetComponent<HighlightFeature>();
+
+                    if (didClickMouse)
                     {
-                        selectDetector.RequestSelect(true);
-                        _lastSelected = selectDetector;
+                        if (selectDetector != null)
+                        {
+                            selectDetector.RequestSelect(true);
+                            _lastSelected = selectDetector;
+                        }
                     }
-                }
 
-                if (highlight != null)
-                {
-                    highlight.SetFocus(true);
-                }
+                    if (highlight != null)
+                    {
+                        highlight.SetFocus(true);
+                    }
+                } 
             }
         }
 

@@ -10,11 +10,14 @@ namespace TreeCity
     public class ObjectInspectorModifier : GameObjectModifier
     {
         private const string CANVAS_NAME = "Canvas";
+        private const string INFO_NAME = "Info";
         private const string SELECTOR_PATH = "selector";
 
 	    private FeatureUiMarker _marker;
 
-	    public override void Run(FeatureBehaviour fb, UnityTile tile)
+        public int fontSize = 12;
+
+        public override void Run(FeatureBehaviour fb, UnityTile tile)
 	    {
 		    if(_marker == null)
 		    {
@@ -39,8 +42,18 @@ namespace TreeCity
 
 			    var sel = Instantiate(Resources.Load<GameObject>(SELECTOR_PATH));
 			    sel.transform.SetParent(canv.transform);
-			    _marker = sel.GetComponent<FeatureUiMarker>();
-		    }
+                sel.SetActive(false);
+
+                var infoPanel = Instantiate(Resources.Load<GameObject>(INFO_NAME), canv.transform);
+                infoPanel.SetActive(false);
+
+                Text infoText = infoPanel.GetComponentInChildren<Text>();
+                infoText.fontSize = fontSize;
+
+                _marker = sel.GetComponent<FeatureUiMarker>();
+                _marker._infoPanel = infoPanel.transform;
+                _marker._info = infoText;
+            }
 
 		    var det = fb.gameObject.AddComponent<FeatureSelectionDetector>();
 		    det.Initialize(_marker, fb);

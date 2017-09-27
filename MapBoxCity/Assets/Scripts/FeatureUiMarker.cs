@@ -4,22 +4,18 @@ namespace TreeCity
     using UnityEngine;
     using UnityEngine.UI;
     using System.Linq;
+    using System.Collections;
 
     public class FeatureUiMarker : MonoBehaviour
     {
         [SerializeField]
 	    private Transform _wrapperMarker;
 
-	    [SerializeField]
-	    private Transform _infoPanel;
-
-	    [SerializeField]
-	    private Text _info;
+	    internal Transform _infoPanel;
+        internal Text _info;
 
 	    private Vector3[] _targetVerts;
 	    private FeatureBehaviour _selectedFeature;
-
-        public int fontSize = 16;
 
         void Update()
 	    {
@@ -35,8 +31,9 @@ namespace TreeCity
 
 	    internal void Clear()
 	    {
-		    gameObject.SetActive(false);
-	    }
+            gameObject.SetActive(false);
+            _infoPanel.gameObject.SetActive(false);
+        }
 
 	    internal void Show(FeatureBehaviour selectedFeature)
 	    {
@@ -50,17 +47,25 @@ namespace TreeCity
 		    transform.position = new Vector3(0, 0, 0);
 		    var mesh = selectedFeature.GetComponent<MeshFilter>();
 
-		    if (mesh != null)
+            gameObject.SetActive(true);
+            _infoPanel.gameObject.SetActive(true);
+
+            if (mesh != null)
 		    {
 			    _targetVerts = mesh.mesh.vertices;
-			    Snap();
+                StartCoroutine(SnapDelayed());
 		    }
-		    gameObject.SetActive(true);
-	    }
+        }
 
-	    private void Snap()
+        private IEnumerator SnapDelayed()
+        {
+            yield return null;
+            Snap();
+        }
+
+        private void Snap()
 	    {
-		    if (_targetVerts == null)
+            if (_targetVerts == null || _selectedFeature == null)
 			    return;
 
 		    var left = float.MaxValue;
@@ -80,17 +85,15 @@ namespace TreeCity
 				    bottom = pos.y;
 		    }
 
-		    _wrapperMarker.position = new Vector2(left - 10, top + 10);
+            _wrapperMarker.position = new Vector2(left - 10, top + 10);
 		    (_wrapperMarker as RectTransform).sizeDelta = new Vector2(right - left + 20, top - bottom + 20);
-
-		    _infoPanel.position = new Vector2(right + 10, top + 10);
-            _info.fontSize = fontSize;
 
             string[] infoText = _selectedFeature.Data.Properties
                                     .Where(x => !string.IsNullOrEmpty(x.Value.ToString()))
                                     .Select(x => x.Key + " - " + x.Value.ToString())
                                     .ToArray();
 
+            _infoPanel.position = new Vector2(right + 20, top + 10);
             _info.text = string.Join("\r\n", infoText);
         }
     }
