@@ -1,39 +1,53 @@
-using UnityEngine;
-
-public class StartupController : MonoBehaviour
+namespace TreeCity
 {
-    private const string ESCAPE = "escape";
+    using UnityEngine;
 
-    [SerializeField]
-    private GameObject _player;
-
-    private GameObject _playerInstance;
-
-    private void Awake()
+    public class StartupController : MonoBehaviour
     {
-        Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
-    }
+        private const string ESCAPE = "escape";
 
-    private void OnDestroy()
-    {
-        Messenger.RemoveListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
-    }
+        [SerializeField]
+        private GameObject _player;
 
-    private void OnMapInitialized()
-    {
-        Debug.Log("OnMapInitialized");
-        if (_playerInstance == null)
+        [SerializeField]
+        private Reticle _reticle;
+
+        private GameObject _playerInstance;
+
+        private void Awake()
         {
-            _playerInstance = Instantiate(_player);
-            _playerInstance.transform.position = new Vector3(-80, 1, -80); // TODO: Serialize? LatLng->World?
+            Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
         }
-    }
 
-    private void Update()
-    {
-        if (Input.GetKey(ESCAPE))
+        private void Start()
         {
-            Application.Quit();
+            if (Screen.fullScreen)
+            {
+                _reticle.LockCursor();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Messenger.RemoveListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
+        }
+
+        private void OnMapInitialized()
+        {
+            Debug.Log("OnMapInitialized");
+            if (_playerInstance == null)
+            {
+                _playerInstance = Instantiate(_player);
+                _playerInstance.transform.position = new Vector3(-80, 1, -80); // TODO: Serialize? LatLng->World?
+            }
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(ESCAPE))
+            {
+                Application.Quit();
+            }
         }
     }
 }
