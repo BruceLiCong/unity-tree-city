@@ -16,8 +16,8 @@ public class MouseLook : MonoBehaviour
     private float _rotX = 0;
 
     public Direction direction;
-    public float sensitivityHor = 6.0f;
-    public float sensitivityVert = 6.0f;
+    public float sensitivityHor = 4.0f;
+    public float sensitivityVert = 4.0f;
 
     private void Start()
     {

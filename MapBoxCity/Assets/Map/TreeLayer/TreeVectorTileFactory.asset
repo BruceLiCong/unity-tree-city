@@ -9,10 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63d97cb1cfb3f1b499c24763afa54873, type: 3}
-  m_Name: CityVTFactory
+  m_Name: TreeVectorTileFactory
   m_EditorClassIdentifier: 
-  _mapId: mapbox.mapbox-streets-v7
+  _mapId: iarellano.cj70opj2m00652wp5336mu0a8-9l93g
   Visualizers:
-  - {fileID: 11400000, guid: ecc5b2cb18ab267418cd231d71d514f9, type: 2}
-  - {fileID: 11400000, guid: 6273dab19dc50ac478fc8962349fddc3, type: 2}
-  - {fileID: 11400000, guid: 489fddf3d4e9d5f45adffaa5fb7a37b8, type: 2}
+  - {fileID: 11400000, guid: 564498e099486c147ab19ecedf1cea8f, type: 2}

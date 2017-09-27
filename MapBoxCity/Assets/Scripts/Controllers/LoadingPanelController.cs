@@ -1,6 +1,6 @@
 namespace TreeCity
 {
-    using Mapbox.Unity.MeshGeneration;
+    using Mapbox.Unity.Map;
     using UnityEngine;
 
     public class LoadingPanelController : MonoBehaviour

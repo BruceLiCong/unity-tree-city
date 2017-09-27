@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 526c8a90df31d41fe8057a6f85c7a3e4, type: 3}
-  m_Name: CityMap
+  m_Name: CityMapVisualizer
   m_EditorClassIdentifier: 
-  _factories:
+  Factories:
   - {fileID: 11400000, guid: 86aa19b2927f86c4293262573c342f39, type: 2}
   - {fileID: 11400000, guid: 04f7b60d2abfdb34182642355128c69e, type: 2}
   - {fileID: 11400000, guid: 29a4327560c74c6469227445333ab9da, type: 2}
   - {fileID: 11400000, guid: f4d77a173840a3041b0b883ee5d3e0cc, type: 2}
+  _loadingTexture: {fileID: 0}

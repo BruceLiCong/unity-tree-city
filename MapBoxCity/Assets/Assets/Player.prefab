@@ -124,7 +124,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1646459531728300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  sensitivityHor: 6
-  sensitivityVert: 6
+  sensitivityHor: 4
+  sensitivityVert: 4
 --- !u!114 &114516452677452730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  sensitivityHor: 6
-  sensitivityVert: 6
+  sensitivityHor: 4
+  sensitivityVert: 4
 --- !u!114 &114917390644451460
 MonoBehaviour:
   m_ObjectHideFlags: 1

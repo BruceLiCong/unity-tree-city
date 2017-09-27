@@ -16,7 +16,6 @@ public class FPSInput : MonoBehaviour
 
     private void Update()
     {
-
         float deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         float deltaZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 

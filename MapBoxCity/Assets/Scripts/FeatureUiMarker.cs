@@ -7,7 +7,7 @@ namespace TreeCity
 
     public class FeatureUiMarker : MonoBehaviour
     {
-	    [SerializeField]
+        [SerializeField]
 	    private Transform _wrapperMarker;
 
 	    [SerializeField]
@@ -19,7 +19,9 @@ namespace TreeCity
 	    private Vector3[] _targetVerts;
 	    private FeatureBehaviour _selectedFeature;
 
-	    void Update()
+        public int fontSize = 16;
+
+        void Update()
 	    {
             if (_selectedFeature != null)
             {
@@ -82,7 +84,7 @@ namespace TreeCity
 		    (_wrapperMarker as RectTransform).sizeDelta = new Vector2(right - left + 20, top - bottom + 20);
 
 		    _infoPanel.position = new Vector2(right + 10, top + 10);
-            _info.fontSize = 32;
+            _info.fontSize = fontSize;
 
             string[] infoText = _selectedFeature.Data.Properties
                                     .Where(x => !string.IsNullOrEmpty(x.Value.ToString()))
