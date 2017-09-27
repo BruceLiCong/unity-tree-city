@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------
 // <copyright file="Map.cs" company="Mapbox">
 //     Copyright (c) 2016 Mapbox. All rights reserved.
 // </copyright>
@@ -229,7 +229,7 @@ namespace Mapbox.Map
 
 				tile.Initialize(param, () => { this.NotifyNext(tile); });
 
-				this.tiles.Add(tile);
+				this.tiles.Add(tile);				
 			}
 		}
 	}
