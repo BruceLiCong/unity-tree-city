@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  sensitivityHor: 3
-  sensitivityVert: 3
+  sensitivityHor: 2
+  sensitivityVert: 2
 --- !u!114 &114516452677452730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 1
-  sensitivityHor: 3
-  sensitivityVert: 3
+  sensitivityHor: 2
+  sensitivityVert: 2
 --- !u!114 &114917390644451460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabac97a74ca4fe4fa932ab9d9f6bae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4.5
 --- !u!114 &114927422182367192
 MonoBehaviour:
   m_ObjectHideFlags: 1

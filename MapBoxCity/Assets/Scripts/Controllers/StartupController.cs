@@ -1,6 +1,7 @@
 namespace TreeCity
 {
     using UnityEngine;
+    using UnityEngine.UI;
 
     public class StartupController : MonoBehaviour
     {
@@ -10,7 +11,10 @@ namespace TreeCity
         private GameObject _player;
 
         [SerializeField]
-        private Reticle _reticle;
+        private RayShooter _rayShooter;
+
+        [SerializeField]
+        private Text _reticleText;
 
         private GameObject _playerInstance;
 
@@ -23,7 +27,7 @@ namespace TreeCity
         {
             if (Screen.fullScreen)
             {
-                _reticle.LockCursor();
+                _rayShooter.LockCursor();
             }
         }
 
@@ -34,6 +38,8 @@ namespace TreeCity
 
         private void OnMapInitialized()
         {
+            _reticleText.gameObject.SetActive(true);
+
             if (_playerInstance == null)
             {
                 _playerInstance = Instantiate(_player);

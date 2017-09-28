@@ -3,7 +3,7 @@ namespace TreeCity
     using UnityEngine;
 
     [RequireComponent(typeof(Camera))]
-    public class Reticle : MonoBehaviour
+    public class RayShooter : MonoBehaviour
     {
         private const string TREE_LAYER = "Tree";
 
