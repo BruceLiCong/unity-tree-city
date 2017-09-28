@@ -2,14 +2,20 @@ namespace TreeCity
 {
     using UnityEngine;
     using UnityEngine.UI;
+    using System.Collections;
 
     public class UIController : MonoBehaviour
     {
+        private const float INSTRUCTION_FADE_DURATION = 5f;
+        private const float INSTRUCTION_FADE_DELAY = 4f;
         [SerializeField]
         private SettingsModal _settingsModal;
 
         [SerializeField]
-        private Text _reticleText;
+        private Text _reticle;
+
+        [SerializeField]
+        private Text _instructions;
 
         private void Awake()
         {
@@ -24,7 +30,7 @@ namespace TreeCity
             }
 
             _settingsModal.gameObject.SetActive(false);
-            _reticleText.gameObject.SetActive(false);
+            _reticle.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -42,7 +48,21 @@ namespace TreeCity
 
         private void OnMapInitialized()
         {
-            _reticleText.gameObject.SetActive(true);
+            _reticle.gameObject.SetActive(true);
+
+            StartCoroutine(FadeTextToZeroAlpha(INSTRUCTION_FADE_DURATION, _instructions, INSTRUCTION_FADE_DELAY));
+        }
+
+        private IEnumerator FadeTextToZeroAlpha(float t, Text i, float delaySec = 0)
+        {
+            yield return new WaitForSeconds(delaySec);
+
+            i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+            while (i.color.a > 0.0f)
+            {
+                i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+                yield return null;
+            }
         }
 
         public void OnOpenSettings()
@@ -50,7 +70,7 @@ namespace TreeCity
             Managers.Controls.UpdateSelectionQueryEnabled(false);
 
             _settingsModal.gameObject.SetActive(true);
-            _reticleText.gameObject.SetActive(false);
+            _reticle.gameObject.SetActive(false);
         }
 
         public void OnCloseSettings()
@@ -58,7 +78,7 @@ namespace TreeCity
             Managers.Controls.UpdateSelectionQueryEnabled(true);
 
             _settingsModal.gameObject.SetActive(false);
-            _reticleText.gameObject.SetActive(true);
+            _reticle.gameObject.SetActive(true);
         }
     }
 
