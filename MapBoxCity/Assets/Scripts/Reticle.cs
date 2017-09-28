@@ -5,6 +5,8 @@ namespace TreeCity
     [RequireComponent(typeof(Camera))]
     public class Reticle : MonoBehaviour
     {
+        private const string TREE_LAYER = "Tree";
+
         private Camera _camera;
         private FeatureSelectionDetector _lastSelected;
 
@@ -26,12 +28,11 @@ namespace TreeCity
 
             Ray ray = _camera.ScreenPointToRay(new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0));
             RaycastHit hit;
-            int layerMask = 1 << LayerMask.NameToLayer("Tree");
 
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject go = hit.transform.gameObject;
-                if (go.layer == LayerMask.NameToLayer("Tree"))
+                if (go.layer == LayerMask.NameToLayer(TREE_LAYER))
                 {
                     FeatureSelectionDetector selectDetector = go.GetComponent<FeatureSelectionDetector>();
                     HighlightFeature highlight = go.GetComponent<HighlightFeature>();

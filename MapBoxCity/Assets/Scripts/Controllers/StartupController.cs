@@ -34,7 +34,6 @@ namespace TreeCity
 
         private void OnMapInitialized()
         {
-            Debug.Log("OnMapInitialized");
             if (_playerInstance == null)
             {
                 _playerInstance = Instantiate(_player);

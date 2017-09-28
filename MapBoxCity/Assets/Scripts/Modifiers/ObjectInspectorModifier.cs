@@ -10,7 +10,7 @@ namespace TreeCity
     public class ObjectInspectorModifier : GameObjectModifier
     {
         private const string CANVAS_NAME = "Canvas";
-        private const string INFO_NAME = "Info";
+        private const string INFO_PATH = "info";
         private const string SELECTOR_PATH = "selector";
 
 	    private FeatureUiMarker _marker;
@@ -44,7 +44,7 @@ namespace TreeCity
 			    sel.transform.SetParent(canv.transform);
                 sel.SetActive(false);
 
-                var infoPanel = Instantiate(Resources.Load<GameObject>(INFO_NAME), canv.transform);
+                var infoPanel = Instantiate(Resources.Load<GameObject>(INFO_PATH), canv.transform);
                 infoPanel.SetActive(false);
 
                 Text infoText = infoPanel.GetComponentInChildren<Text>();

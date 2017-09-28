@@ -93,7 +93,7 @@ namespace TreeCity
                                     .Select(x => x.Key + " - " + x.Value.ToString())
                                     .ToArray();
 
-            _infoPanel.position = new Vector2(right + 20, top + 10);
+            _infoPanel.position = new Vector2(right + 10, top + 10);
             _info.text = string.Join("\r\n", infoText);
         }
     }
