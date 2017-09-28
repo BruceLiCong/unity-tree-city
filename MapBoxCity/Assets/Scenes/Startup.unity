@@ -364,8 +364,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 238845182}
-        m_MethodName: Hide
+      - m_Target: {fileID: 1445483962}
+        m_MethodName: OnCloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -484,6 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ab51a7272dbf543ac09550a42fabec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sensitivitySlider: {fileID: 360357686}
+  _sensitivityLabel: {fileID: 1384161636}
+  _moveSpeedSlider: {fileID: 955495132}
+  _moveSpeedLabel: {fileID: 2061236657}
 --- !u!1 &253307921
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &333483606
 GameObject:
@@ -749,7 +753,7 @@ GameObject:
   - component: {fileID: 360357685}
   - component: {fileID: 360357686}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SensitivitySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -815,13 +819,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 1672910630}
   m_HandleRect: {fileID: 253307922}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 8
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 238845182}
+        m_MethodName: OnMouseSensitivityValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &451889813
@@ -913,7 +928,7 @@ RectTransform:
   - {fileID: 238845179}
   - {fileID: 1663416110}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1033,7 +1048,7 @@ Prefab:
     - target: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224000013044306136, guid: 3adcee2515f8c49f4a7afb3bacf2c56e,
         type: 2}
@@ -1097,6 +1112,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3adcee2515f8c49f4a7afb3bacf2c56e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &869819515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 869819518}
+  - component: {fileID: 869819517}
+  - component: {fileID: 869819516}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &869819516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 869819515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dcfb99178de9e4486a80cfe0af87ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 4
+  _mouseSensitivity: 2
+--- !u!114 &869819517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 869819515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c54785fb1551f343a57b131d766e49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &869819518
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 869819515}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911193788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1324,7 @@ GameObject:
   - component: {fileID: 955495131}
   - component: {fileID: 955495132}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MoveSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,13 +1390,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 25637109}
   m_HandleRect: {fileID: 999906048}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 238845182}
+        m_MethodName: OnMoveSpeedValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &999906047
@@ -1537,7 +1617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212965686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1657,7 +1737,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1384161634
 GameObject:
@@ -1670,7 +1750,7 @@ GameObject:
   - component: {fileID: 1384161637}
   - component: {fileID: 1384161636}
   m_Layer: 5
-  m_Name: Value
+  m_Name: SensitivityValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1726,7 +1806,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99.2
+  m_Text: '1
+
+'
 --- !u!222 &1384161637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1947,7 +2029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1445483961
 MonoBehaviour:
@@ -1961,9 +2043,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1646459531728300, guid: 7a74421b8159ae144bf23b84d96ad14d, type: 2}
-  _rayShooter: {fileID: 114927422182367192, guid: 7a74421b8159ae144bf23b84d96ad14d,
-    type: 2}
-  _reticleText: {fileID: 1212965687}
 --- !u!114 &1445483962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1976,6 +2055,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settingsModal: {fileID: 238845182}
+  _rayShooter: {fileID: 114927422182367192, guid: 7a74421b8159ae144bf23b84d96ad14d,
+    type: 2}
+  _reticleText: {fileID: 1212965687}
 --- !u!1 &1587969930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2406,7 @@ Transform:
   - {fileID: 1587969934}
   - {fileID: 1863867465}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061236655
 GameObject:
@@ -2337,7 +2419,7 @@ GameObject:
   - component: {fileID: 2061236658}
   - component: {fileID: 2061236657}
   m_Layer: 5
-  m_Name: Value
+  m_Name: MoveValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2393,7 +2475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99.2
+  m_Text: 1
 --- !u!222 &2061236658
 CanvasRenderer:
   m_ObjectHideFlags: 0

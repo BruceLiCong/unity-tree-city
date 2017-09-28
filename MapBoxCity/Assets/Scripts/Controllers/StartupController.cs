@@ -1,7 +1,6 @@
 namespace TreeCity
 {
     using UnityEngine;
-    using UnityEngine.UI;
 
     public class StartupController : MonoBehaviour
     {
@@ -10,25 +9,11 @@ namespace TreeCity
         [SerializeField]
         private GameObject _player;
 
-        [SerializeField]
-        private RayShooter _rayShooter;
-
-        [SerializeField]
-        private Text _reticleText;
-
         private GameObject _playerInstance;
 
         private void Awake()
         {
             Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
-        }
-
-        private void Start()
-        {
-            if (Screen.fullScreen)
-            {
-                _rayShooter.LockCursor();
-            }
         }
 
         private void OnDestroy()
@@ -38,8 +23,6 @@ namespace TreeCity
 
         private void OnMapInitialized()
         {
-            _reticleText.gameObject.SetActive(true);
-
             if (_playerInstance == null)
             {
                 _playerInstance = Instantiate(_player);

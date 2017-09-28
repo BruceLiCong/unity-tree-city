@@ -24,16 +24,6 @@ public class SettingsModal : MonoBehaviour
         _moveSpeedLabel.text = Managers.Controls.MoveSpeed.ToString();
     }
 
-    public void Show()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void OnMoveSpeedValue(float value)
     {
         Managers.Controls.UpdateMoveSpeed(value);

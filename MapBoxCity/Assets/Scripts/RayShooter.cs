@@ -18,6 +18,11 @@ namespace TreeCity
 
         private void Update()
         {
+            if (!Managers.Controls.SelectionQueryEnabled)
+            {
+                return;
+            }
+
             bool didClickMouse = Input.GetMouseButtonDown(0);
 
             if (didClickMouse && _lastSelected != null)
@@ -52,15 +57,6 @@ namespace TreeCity
                     }
                 } 
             }
-        }
-
-        /// <summary>
-        /// Hide the cursor and lock to center of the screen
-        /// </summary>
-        public void LockCursor()
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
     }
 }

@@ -1,25 +1,65 @@
-using UnityEngine;
-
-public class UIController : MonoBehaviour
+namespace TreeCity
 {
-    [SerializeField]
-    private SettingsModal _settingsModal;
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    private void Start()
+    public class UIController : MonoBehaviour
     {
-        _settingsModal.Hide();
-    }
+        [SerializeField]
+        private SettingsModal _settingsModal;
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.C))
+        [SerializeField]
+        private Text _reticleText;
+
+        private void Awake()
         {
-            OnOpenSettings();
+            Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
+        }
+
+        private void Start()
+        {
+            if (Screen.fullScreen)
+            {
+                Managers.Controls.LockCursor();
+            }
+
+            _settingsModal.gameObject.SetActive(false);
+            _reticleText.gameObject.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.C))
+            {
+                OnOpenSettings();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Messenger.RemoveListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
+        }
+
+        private void OnMapInitialized()
+        {
+            _reticleText.gameObject.SetActive(true);
+        }
+
+        public void OnOpenSettings()
+        {
+            Managers.Controls.UpdateSelectionQueryEnabled(false);
+
+            _settingsModal.gameObject.SetActive(true);
+            _reticleText.gameObject.SetActive(false);
+        }
+
+        public void OnCloseSettings()
+        {
+            Managers.Controls.UpdateSelectionQueryEnabled(true);
+
+            _settingsModal.gameObject.SetActive(false);
+            _reticleText.gameObject.SetActive(true);
         }
     }
 
-    public void OnOpenSettings()
-    {
-        _settingsModal.Show();
-    }
 }
