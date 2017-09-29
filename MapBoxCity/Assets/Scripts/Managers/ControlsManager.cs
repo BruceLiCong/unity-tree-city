@@ -39,7 +39,7 @@ public class ControlsManager : MonoBehaviour
     /// </summary>
     public void LockCursor()
     {
-        if (Screen.fullScreen)
+        if (Screen.fullScreen && !(Application.platform == RuntimePlatform.WebGLPlayer))
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -48,7 +48,7 @@ public class ControlsManager : MonoBehaviour
 
     public void ReleaseCursor()
     {
-        if (Screen.fullScreen)
+        if (Screen.fullScreen && !(Application.platform == RuntimePlatform.WebGLPlayer))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -33,9 +33,16 @@ namespace TreeCity
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKeyUp(KeyCode.C))
             {
-                OnOpenSettings();
+                if (!_settingsModal.gameObject.activeInHierarchy)
+                {
+                    OnOpenSettings();
+                }
+                else
+                {
+                    OnCloseSettings();
+                }
             }
         }
 
