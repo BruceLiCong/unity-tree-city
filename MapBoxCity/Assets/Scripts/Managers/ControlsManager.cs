@@ -39,13 +39,19 @@ public class ControlsManager : MonoBehaviour
     /// </summary>
     public void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (Screen.fullScreen && !(Application.platform == RuntimePlatform.WebGLPlayer))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void ReleaseCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (Screen.fullScreen && !(Application.platform == RuntimePlatform.WebGLPlayer))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }

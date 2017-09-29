@@ -25,10 +25,7 @@ namespace TreeCity
 
         private void Start()
         {
-            if (Screen.fullScreen)
-            {
-                Managers.Controls.LockCursor();
-            }
+            Managers.Controls.LockCursor();
 
             _settingsModal.gameObject.SetActive(false);
             _reticle.gameObject.SetActive(false);
@@ -36,9 +33,16 @@ namespace TreeCity
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetKeyUp(KeyCode.C))
             {
-                OnOpenSettings();
+                if (!_settingsModal.gameObject.activeInHierarchy)
+                {
+                    OnOpenSettings();
+                }
+                else
+                {
+                    OnCloseSettings();
+                }
             }
         }
 
@@ -69,6 +73,7 @@ namespace TreeCity
         public void OnOpenSettings()
         {
             Managers.Controls.UpdateSelectionQueryEnabled(false);
+            Managers.Controls.ReleaseCursor();
 
             _settingsModal.gameObject.SetActive(true);
             _reticle.gameObject.SetActive(false);
@@ -77,6 +82,7 @@ namespace TreeCity
         public void OnCloseSettings()
         {
             Managers.Controls.UpdateSelectionQueryEnabled(true);
+            Managers.Controls.LockCursor();
 
             _settingsModal.gameObject.SetActive(false);
             _reticle.gameObject.SetActive(true);

@@ -42,9 +42,11 @@ namespace TreeCity
 
 			    var sel = Instantiate(Resources.Load<GameObject>(SELECTOR_PATH));
 			    sel.transform.SetParent(canv.transform);
+                sel.transform.SetAsFirstSibling();
                 sel.SetActive(false);
 
                 var infoPanel = Instantiate(Resources.Load<GameObject>(INFO_PATH), canv.transform);
+                infoPanel.transform.SetAsFirstSibling();
                 infoPanel.SetActive(false);
 
                 Text infoText = infoPanel.GetComponentInChildren<Text>();
