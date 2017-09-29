@@ -9,22 +9,11 @@ namespace TreeCity
         [SerializeField]
         private GameObject _player;
 
-        [SerializeField]
-        private Reticle _reticle;
-
         private GameObject _playerInstance;
 
         private void Awake()
         {
             Messenger.AddListener(MapEvent.MAP_INITIALIZED, OnMapInitialized);
-        }
-
-        private void Start()
-        {
-            if (Screen.fullScreen)
-            {
-                _reticle.LockCursor();
-            }
         }
 
         private void OnDestroy()
