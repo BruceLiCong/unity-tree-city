@@ -6,8 +6,9 @@ namespace TreeCity
 
     public class UIController : MonoBehaviour
     {
-        private const float INSTRUCTION_FADE_DURATION = 5f;
-        private const float INSTRUCTION_FADE_DELAY = 4f;
+        private const float INSTRUCTION_FADE_DURATION = 2f;
+        private const float INSTRUCTION_FADE_DELAY = 8f;
+
         [SerializeField]
         private SettingsModal _settingsModal;
 
