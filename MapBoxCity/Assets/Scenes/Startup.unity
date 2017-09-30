@@ -356,7 +356,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Arrow Keys / W,A,S,D Keys: Walk\r\nLeft Mouse Button: View tree information\nC
-    Key: Show controls\nQ Key: Quit demo"
+    Key: Show controls\nEsc Key: Quit demo"
 --- !u!222 &187119561
 CanvasRenderer:
   m_ObjectHideFlags: 0
